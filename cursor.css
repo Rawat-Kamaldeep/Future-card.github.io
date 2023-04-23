@@ -1,0 +1,266 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: black;
+}
+
+#blob{
+    height: 300px;
+    width: 300px;
+    background: linear-gradient(
+        to right,
+        aqua,
+        mediumpurple
+    );
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    animation: rotate 20s infinite;
+}
+
+@keyframes rotate{
+    from{
+        rotate: 0deg;
+    }
+
+    50%{
+        transform: scale(1, 1.5);
+    }
+
+    to{
+        rotate: 300deg;
+    }
+}
+
+#blur{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(100px);
+}
+
+span{
+    font-size: 50px;
+    color: white;
+    position: relative;
+    z-index: 3;
+}
+
+.screen{
+    height: 500px;
+    border: 3px solid #41038c;
+    aspect-ratio: 17 / 25;
+    border-radius: 1rem;
+    background-color: #ab79ff;
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+    top: 100px;
+    left: 500px;
+}
+
+.screen-overlay{
+    background: linear-gradient(
+        rgba(65, 3, 140, 0.15),
+    rgba(65, 3, 140, 0.15) 3px,
+        transparent 3px,
+        transparent 9px
+    );
+    background-size: 9px 9px;
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+    animation: pan-overlay 7s infinite ease-in-out ;
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 0;
+}
+
+.screen:after,
+.screen:before {
+  content: "";
+  height: 5px;
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  translate: -50% 0%;
+  background-color: white;
+}
+
+.screen:before {
+  width: 15%;
+  top: 0rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.screen:after {
+  width: 25%;
+  bottom: 0rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+
+@keyframes pan-overlay{
+    form{
+        background-position: 0% 0%;
+    }
+
+    to{
+        background-position: 0% -100%;
+    }
+}
+
+.screen > .screen-image{
+    background-image: url("bg.jpg");
+    height: 100%;
+    width: 100%;
+    background-size: 300%;
+    background-position: center;
+    filter: sepia(100%) hue-rotate(90%);
+    opacity: 0.6;
+    animation: pan-image 10s linear infinite;
+    position: absolute;
+    z-index: 3;
+}
+
+.screen > .screen-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+    gap: 4rem;
+    position: relative;
+    z-index: 3;
+    margin: 1rem;
+    padding-bottom: 6rem;
+    border: 1px solid #41038c;;
+    border-radius: 0.6rem;
+    height: 70%;
+    padding-bottom: 110px;
+}
+
+.screen > .screen-content > .screen-icon {
+    color: white;
+    font-size: 5rem;
+    text-shadow: 0px 0px 0.5rem white;
+}
+
+.screen > .screen-content > .screen-user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+/* .screen > .screen-content > .screen-user:before,
+.screen > .screen-content > .screen-user:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  background-color: aquamarine;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 8px 3px rgb(var(--primary-rgb) / 60%);
+} */
+
+.screen > .screen-content > .screen-user:after {
+    height: 3px;
+    width: 30px;
+    translate: 26px 
+  }
+
+  .screen > .screen-content > .screen-user > :is(.name, .link) {
+    font-family: "Source Code Pro", monospace;
+    color: white; 
+    text-align: center;
+    text-transform: uppercase; 
+  }
+  
+  .screen > .screen-content > .screen-user > .name {
+    position: relative;
+    font-size: 3rem;
+    font-weight: 400;
+  }
+  
+  .screen > .screen-content > .screen-user > .name:before,
+  .screen > .screen-content > .screen-user > .name:after {
+    content: "";
+    height: 4px;
+    width: 4px;
+    position: absolute;
+    border: 2px solid white;
+    border-radius: 2px;
+  }
+  
+  .screen > .screen-content > .screen-user > .name:before {
+    top: 55%;
+    right: -1.5rem;
+  }
+  
+  .screen > .screen-content > .screen-user > .name:after {
+    top: 45%;
+    left: -1.5rem;  
+  }
+
+
+@keyframes pan-image{
+    0%{
+        background-position: 40% 50%;
+        background-size: 200%;
+    }
+
+    20%{
+        background-position: 80% 95%;
+        background-size: 200%;
+    }
+    20.0001%{
+        background-position: 16% 95%;
+        background-size: 500%;
+    }
+
+    40%{
+        background-positon: 80% 50%;
+        background-size: 500%;
+    }
+
+    40.0001%{
+        background-positon: 80% 80%;
+        background-size: 300%;
+    }
+
+    60%{
+        background-positon: 10% 20%;
+        background-size: 300%;
+    }
+
+    60.0001%{
+        background-positon: 80% 20%;
+        background-size: 400%;
+    }
+
+    80%{
+        background-positon: 50% 50%;
+        background-size: 400%;
+    }
+
+    80.0001%{
+        background-positon: 20% 80%;
+        background-size: 200%;
+    }
+
+    100%{
+        background-positon: 80% 50%;
+        background-size: 200%;
+    }
+
+}
+
